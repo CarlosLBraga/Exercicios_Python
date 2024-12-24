@@ -24,17 +24,59 @@ class Carro:
       print(f"Marca: {self.marca}, Modelo: {self.modelo}, Cor: {self.cor}")
 
 
-carro1 = Carro("Toyota", "Corolla", "Branca")
-carro1.exibir_info()
-carro1.acelerar()
-carro1.acelerar()
-carro1.acelerar()
-carro1.frear()
+lista_carros = []
 
-print("--------------------------")
+while True != 5:
+  print("\n --- menu ---")
+  print("1. cadastrar carro")
+  print("2. Exibir informações dos carros")
+  print("3. Acelerar carro")
+  print("4. Frear carro")
+  print("5. Sair")
 
-carro2 = Carro("Ford", "Fiesta", "Preto")
+  escolha = input("escolha um opções: ")
+  
 
-carro2.exibir_info()
-carro2.acelerar()
-carro2.acelerar()
+  if escolha == "5":
+    print("saindo do programa")
+    break
+  
+  elif escolha == "1":
+    marca = input("digite a marca do carro: ")
+    modelo = input("digite o modelo do carro: ")
+    cor = input("digite a cor do carro: ")
+
+    novo_carro = Carro(marca, modelo, cor)
+    lista_carros.append(novo_carro)
+
+    print("Cadastrado com sucesso!")
+
+  elif escolha == "2":
+    if lista_carros:
+      for carro in lista_carros:
+        carro.exibir_info()
+
+    else:
+      print("não há carros cadastrados")
+
+  elif escolha == "3":
+    modelo = input ("digite o modelo do carro que deseja acelerar: ")
+
+    for carro in lista_carros:
+      if carro.modelo == modelo:
+        carro.acelerar()
+        break
+      else:
+        print("modelo não encontrado")
+
+  elif escolha == "4":
+    modelo = input ("digite o modelo do carro que deseja frear: ")
+    for carro in lista_carros:
+      if carro.modelo == modelo:
+        carro.frear()
+        break
+      else:
+        print("modelo não encontrado")
+
+  else:
+    print("opção invalida")
